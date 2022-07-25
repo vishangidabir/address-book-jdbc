@@ -4,6 +4,7 @@ import java.sql.*;
 
 public class AddressBookJDBC {
     public static void main(String[] args) throws SQLException {
+        System.out.println("~~~Welcome to Address Book Program on JDBC~~~");
         String jdbcURL = "jdbc:mysql://localhost:3307/address_book_service?useSSL=false";
         String userName = "root";
         String passWord = "1234";
