@@ -16,11 +16,9 @@ public class AddressBookJDBC {
             connection = DriverManager.getConnection(jdbcURL, userName, passWord);
             System.out.println("Connection is successful!!!!" + connection);
             Statement statement = connection.createStatement();
-            statement.execute("update address_book_service.address_book set firstName = 'Priyanka' where  firstName = 'Madhu'");
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM address_book_service.address_book");
-            System.out.println("Update address Book contact from database :");
+            ResultSet resultSet = statement.executeQuery("select * from address_book_service.address_book where start between cast('2020-01-01' as date) and date (now())");
+            System.out.println("Retrieve address Book contact from perticular database :");
             System.out.println();
-
             while (resultSet.next()) {
                 System.out.println(resultSet.getString(1)
                         + " " + resultSet.getString(2)
@@ -30,8 +28,9 @@ public class AddressBookJDBC {
                         + " " + resultSet.getString(6)
                         + " " + resultSet.getInt(7)
                         + " " + resultSet.getInt(8)
-                        + " " + resultSet.getString(9)
-                        + " " + resultSet.getString(10));
+                        + " " + resultSet.getDate(9)
+                        + " " + resultSet.getString(10)
+                        + " " + resultSet.getString(11));
             }
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
